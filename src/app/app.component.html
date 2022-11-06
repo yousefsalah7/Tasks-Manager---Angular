@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark opacity-50">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">TaskManager</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item" *ngIf="logiservice.currentUserName!=''">
+          <a class="nav-link active" href="#">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link" routerLink="dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="projects">Projects</a>
+        </li>
+
+        <li class="nav-item dropdown" *ngIf="logiservice.currentUserName!=''">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </li>
+        <li class="nav-item d-flex" *ngIf="logiservice.currentUserName==null">
+          <a class="nav-link" href="#" routerLink="LogIn">Login </a>
+        </li>
+        <li class="nav-item d-flex" *ngIf="logiservice.currentUserName==null">
+          <a class="nav-link" href="#" routerLink="SignUp">SignUp </a>
+        </li>
+        <li class="nav-item d-flex" *ngIf="logiservice.currentUserName!=null">
+          <a class="nav-link" href="#" (click)="logiservice.Logout()">Log out </a>
+        </li>
+      </ul>
+
+          <a class="nav-link" style="color:rgb(255, 255, 255) ; padding-right:10px;font-weight: 800 ;" *ngIf="logiservice.currentUserName!=''" href="#" >{{logiservice.currentUserName}}</a>
+
+
+
+      <form class="d-flex">
+        <input class="form-control me-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+
+
+
+<div>
+<router-outlet></router-outlet>
+</div>
+
